@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Food Delivery Service</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #34495e;
+            padding: 40px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 24px;
+        }
+
+        .about-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: white;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .about-section h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .about-section p {
+            font-size: 18px;
+            color: #7f8c8d;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .mission-values {
+            padding: 50px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0WMtJVz4ert2hhg0yQHhg67m5VyQMSCTmKg&s");
+            background-size: cover;
+            color: #2c3e50;
+        }
+
+        .mission-values .box {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            width: 320px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-values .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .mission-values h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .mission-values p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #7f8c8d;
+        }
+
+        .team-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .team-section h2 {
+            font-size: 38px;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            background-color: white;
+            padding: 20px;
+            width: 280px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover img {
+            transform: scale(1.1);
+        }
+
+        .team-member h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .team-member p {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Button styles for Call to Action */
+        .cta-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Animation Styles */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mission-values {
+                flex-direction: column;
+            }
+
+            .team-container {
+                flex-direction: column;
+            }
+
+            .about-section h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>About Us</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <h3>FoodieXpress</h3>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <h1>Who We Are</h1>
+        <p>
+            At FoodieXpress, we're passionate about delivering delicious food to your doorstep.
+            Our mission is to provide fast, reliable, and affordable food delivery services from the best local restaurants.
+            With a focus on quality and customer satisfaction, we aim to make your dining experience simple and enjoyable.
+        </p>
+        <br><br>
+        <a href="#contact" class="cta-btn">Get in Touch</a>
+    </section>
+
+    <!-- Mission & Values Section -->
+    <section class="mission-values">
+        <div class="box">
+            <h3>Our Mission</h3>
+            <p>To connect people with great food from local restaurants and provide an outstanding delivery service that ensures satisfaction.</p>
+        </div>
+        <div class="box">
+            <h3>Our Values</h3>
+            <p>We believe in quality, efficiency, and putting our customers first. Every meal delivered reflects our commitment to excellence.</p>
+        </div>
+        <div class="box">
+            <h3>Why Choose Us?</h3>
+            <p>We offer quick delivery, a variety of restaurant options, and 24/7 support to ensure the best experience possible.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI_G7wsBDto9rPotGwyn22CqwUBLJW4huD7D9zQZwmqQ-U6tLYWGtd0bBHJYJBOaj2I7s&usqp=CAU" alt="CEO Image">
+                <h3>JENNY</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="https://www.shutterstock.com/image-vector/round-avatar-female-character-portrait-260nw-1136261252.jpg" alt="CTO Image">
+                <h3>Jane Smith</h3>
+                <p>Chief Technology Officer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://img.freepik.com/premium-vector/3d-young-woman-avatar-happy-smiling-face-icon_313242-1241.jpg" alt="COO Image">
+                <h3>Miikeee</h3>
+                <p>Chief Operating Officer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 FoodieXpress. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

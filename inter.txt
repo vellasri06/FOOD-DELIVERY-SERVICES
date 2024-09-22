@@ -1,0 +1,443 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Menu</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ff6347;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Categories Styling */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .category-btn {
+            background-color: #fff;
+            border: 2px solid #ff6347;
+            color: #ff6347;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: #ff6347;
+            color: #fff;
+        }
+
+        /* Menu Styling */
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            width: 250px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .item-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .item-info h3 {
+            margin-bottom: 10px;
+            color: #ff6347;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        .item-info .price {
+            color: #555;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        /* Details Section Styling */
+        .details {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .details .cost, .details .restaurants {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: opacity 0.3s;
+        }
+
+        .details .cost h2, .details .restaurants h2 {
+            margin-bottom: 15px;
+            color: #ff6347;
+            font-size: 1.8em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .details .cost p, .details .restaurants ul {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .restaurants ul {
+            list-style: none;
+        }
+
+        .restaurants li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .restaurants li::before {
+            content: '📍';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .restaurants li:last-child {
+            border-bottom: none;
+        }
+
+        /* Cart Section */
+        .cart {
+            margin-top: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .cart h2 {
+            text-align: center;
+            color: #ff6347;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart-items li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cart-items li:last-child {
+            border-bottom: none;
+        }
+
+        .total {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Delivery Button */
+        .delivery-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .delivery-btn:hover {
+            background-color: #e55347;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .menu-item {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .details .cost, .details .restaurants {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Delicious Menu</h1>
+        
+        <!-- Categories -->
+        <div class="categories">
+            <button class="category-btn active" onclick="filterMenu('All')">All</button>
+            <button class="category-btn" onclick="filterMenu('Main Course')">Main Course</button>
+            <button class="category-btn" onclick="filterMenu('Snacks')">Snacks</button>
+            <button class="category-btn" onclick="filterMenu('Desserts')">Desserts</button>
+            <button class="category-btn" onclick="filterMenu('Drinks')">Drinks</button>
+        </div>
+
+        <!-- Menu Items -->
+        <div class="menu">
+            <!-- Main Course -->
+            <div class="menu-item" data-category="Main Course" onclick="selectItem('Shawarma')">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.O_36KDxDkOxsfoSpb5yzjQHaEK&pid=Api&P=0&h=180" alt="Shawarma">
+                <div class="item-info">
+                    <h3>Shawarma</h3>
+                    <p class="price">₹299</p>
+                </div>
+            </div>
+
+            <div class="menu-item" data-category="Main Course" onclick="selectItem('Biryani')">
+                <img src="https://cdn.shortpixel.ai/client/q_lossy,ret_img,w_1200,h_1799/https://norecipes.com/wp-content/uploads/2017/05/chicken-biryani-12-1200x1799.jpg" alt="Biryani">
+                <div class="item-info">
+                    <h3>Biryani</h3>
+                    <p class="price">₹349</p>
+                </div>
+            </div>
+            <div class="menu-item" data-category="Main Course" onclick="selectItem('Fried Rice')">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.jCTttlKz49sjojN3Igxj-QAAAA&pid=Api&P=0&h=180" alt="Fried Rice">
+                <div class="item-info">
+                    <h3>Fried Rice</h3>
+                    <p class="price">₹249</p>
+                </div>
+            </div>
+            <div class="menu-item" data-category="Main Course" onclick="selectItem('Burger')">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.9WOvj3rAHJ_vug999PKi0QHaHa&pid=Api&P=0&h=180" alt="Burger">
+                <div class="item-info">
+                    <h3>Burger</h3>
+                    <p class="price">₹199</p>
+                </div>
+            </div>
+            <!-- Snacks -->
+            <div class="menu-item" data-category="Snacks" onclick="selectItem('French Fries')">
+                <img src="https://goldenfingers.us/wp-content/uploads/2020/03/french_fry.jpg" alt="French Fries">
+                <div class="item-info">
+                    <h3>French Fries</h3>
+                    <p class="price">₹149</p>
+                </div>
+            </div>
+            <div class="menu-item" data-category="Snacks" onclick="selectItem('Nachos')">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.1r5-kqAK3c6RLCCq3odfgAHaLH&pid=Api&P=0&h=180" alt="Nachos">
+                <div class="item-info">
+                    <h3>Nachos</h3>
+                    <p class="price">₹179</p>
+                </div>
+            </div>
+            <!-- Desserts -->
+            <div class="menu-item" data-category="Desserts" onclick="selectItem('Chocolate Cake')">
+                <img src="https://joyfoodsunshine.com/wp-content/uploads/2020/08/best-chocolate-cake-recipe-9.jpg" alt="Chocolate Cake">
+                <div class="item-info">
+                    <h3>Chocolate Cake</h3>
+                    <p class="price">₹250</p>
+                </div>
+            </div>
+            <div class="menu-item" data-category="Desserts" onclick="selectItem('Ice Cream')">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.ywlZuj-ShTWHZX72zsYtlAHaHI&pid=Api&P=0&h=180" alt="Ice Cream">
+                <div class="item-info">
+                    <h3>Ice Cream</h3>
+                    <p class="price">₹150</p>
+                </div>
+            </div>
+            <!-- Drinks -->
+            <div class="menu-item" data-category="Drinks" onclick="selectItem('Soda')">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.1gIP_AKCym9tRJwTIAVRKQHaHa&pid=Api&P=0&h=180" alt="Soda">
+                <div class="item-info">
+                    <h3>Soda</h3>
+                    <p class="price">₹99</p>
+                </div>
+            </div>
+            <div class="menu-item" data-category="Drinks" onclick="selectItem('Coffee')">
+                <img src="https://www.myweekly.co.uk/wp-content/uploads/sites/9/2018/06/iStock-814684194-coffee-x.jpg" alt="Coffee">
+                <div class="item-info">
+                    <h3>Coffee</h3>
+                    <p class="price">₹149</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details Section -->
+        <div class="details" id="detailsSection" style="display: none;">
+            <div class="cost" id="costSection" style="display: none;">
+                <h2>Cost</h2>
+                <p id="itemCost"></p>
+            </div>
+            <div class="restaurants" id="restaurantsSection" style="display: none;">
+                <h2>Available at:</h2>
+                <ul></ul>
+            </div>
+        </div>
+
+        <!-- Cart Section -->
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <ul class="cart-items" id="cartItems">
+                <!-- Cart items will be added here -->
+            </ul>
+            <div class="total" id="totalCost">Total: ₹0</div>
+            <button class="delivery-btn" onclick="promptAddress()">Delivery</button>
+        </div>
+    </div>
+
+    <script>
+        const menuData = {
+            "Shawarma": {price: 299, restaurants: ["Restaurant A", "Restaurant B", "Restaurant C"]},
+            "Biryani": {price: 349, restaurants: ["Restaurant D", "Restaurant E", "Restaurant F"]},
+            "Fried Rice": {price: 249, restaurants: ["Restaurant A", "Restaurant B"]},
+            "Burger": {price: 199, restaurants: ["Restaurant C", "Restaurant D"]},
+            "French Fries": {price: 149, restaurants: ["Restaurant A", "Restaurant B"]},
+            "Nachos": {price: 179, restaurants: ["Restaurant C", "Restaurant D"]},
+            "Chocolate Cake": {price: 250, restaurants: ["Restaurant A", "Restaurant B"]},
+            "Ice Cream": {price: 150, restaurants: ["Restaurant C", "Restaurant D"]},
+            "Soda": {price: 99, restaurants: ["Restaurant A", "Restaurant E", "Restaurant F"]},
+            "Coffee": {price: 149, restaurants: ["Restaurant C", "Restaurant D"]}
+        };
+
+        const cart = [];
+        let total = 0;
+
+        // Function to filter menu items
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                if (category === 'All' || itemCategory === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to the clicked button
+            event.target.classList.add('active');
+
+            // Hide cost section and restaurant section
+            document.getElementById('costSection').style.display = 'none';
+            document.getElementById('restaurantsSection').style.display = 'none';
+        }
+
+        // Function to handle menu item selection
+        function selectItem(item) {
+            const selectedItem = menuData[item];
+
+            // Add item to cart
+            cart.push(item);
+            total += selectedItem.price;
+            updateCart();
+
+            // Display cost section
+            document.getElementById('itemCost').textContent = `Cost: ₹${selectedItem.price}`;
+            document.getElementById('costSection').style.display = 'block';
+            document.getElementById('detailsSection').style.display = 'block';
+
+            // Display restaurants section
+            const restaurantList = document.getElementById('restaurantsSection').querySelector('ul');
+            restaurantList.innerHTML = selectedItem.restaurants.map(restaurant => `<li>${restaurant}</li>`).join('');
+            document.getElementById('restaurantsSection').style.display = 'block';
+        }
+
+        // Function to update the cart display
+        function updateCart() {
+            const cartItemsElement = document.getElementById('cartItems');
+            cartItemsElement.innerHTML = cart.map(item => `<li>${item} - ₹${menuData[item].price}</li>`).join('');
+            document.getElementById('totalCost').textContent = `Total: ₹${total}`;
+        }
+
+        // Function to prompt for delivery address
+        function promptAddress() {
+            const address = prompt("Please enter your delivery address:");
+            if (address) {
+                alert(`Your order will be delivered to: ${address}`);
+            } else {
+                alert("Delivery address is required.");
+            }
+        }
+    </script>
+
+</body>
+</html>

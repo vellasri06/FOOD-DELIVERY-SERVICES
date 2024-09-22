@@ -1,0 +1,52 @@
+// Homepage Interactivity
+document.getElementById('get-started-btn').addEventListener('click', function() {
+    alert('Ready to start your food journey? Register now!');
+    window.location.href = 'register.html';
+});
+
+// Registration Form Validation
+document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission for validation
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const errorMessage = document.getElementById('register-error-message');
+
+    if (name === '' || email === '' || password === '' || confirmPassword === '') {
+        errorMessage.textContent = 'All fields are required!';
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        errorMessage.textContent = 'Passwords do not match!';
+        return;
+    }
+
+    // Perform further validation here (e.g., email format, password strength)
+
+    errorMessage.textContent = ''; // Clear error message
+    alert('Registration successful!');
+    window.location.href = 'login.html';
+});
+
+// Login Form Validation
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission for validation
+
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    const errorMessage = document.getElementById('login-error-message');
+
+    if (email === '' || password === '') {
+        errorMessage.textContent = 'Email and password are required!';
+        return;
+    }
+
+    // Perform additional login validation here
+
+    errorMessage.textContent = ''; // Clear error message
+    alert('Login successful!');
+    window.location.href = 'index.html';
+});
